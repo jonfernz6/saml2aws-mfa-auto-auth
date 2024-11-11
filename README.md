@@ -15,6 +15,8 @@ This tool automates the AWS login process via SAML with Multi-Factor Authenticat
   - `pyotp`
   - `python-dotenv`
 - **saml2aws**: Ensure that `saml2aws` is installed and configured with your Identity Provider (IdP) account.
+  
+_Note: Running the pip installation and the script in a virtual environment is recommended but not mandatory_
 
 ## Installation
 
@@ -48,7 +50,7 @@ To simplify running the tool, you can create an alias in your shell configuratio
 **Add an Alias**: Open your shell configuration file and add an alias, replacing the path with your actual script location:
 
    ```bash
-   alias saml2aws='python /path/to/your/saml2aws-mfa-auto-auth/auto_saml2aws.py'
+   alias samlautoauth='python /path/to/your/saml2aws-mfa-auto-auth/auto_saml2aws.py'
    ```
 **Reload the Shell**: After saving the file, reload your shell:
 
@@ -59,7 +61,7 @@ source ~/.zshrc  # or source ~/.bashrc
 **Run the Tool**: Now you can simply run:
 
 ```bash
-saml2aws
+samlautoauth
 ```
 
 ## How It Works
@@ -95,6 +97,7 @@ chmod 600 ~/.saml2aws-mfa-auto-auth.env
 - **Environment Variables Not Set**: Make sure you have `python-dotenv` installed and that the `.env` file is properly formatted.
 - **Alias Not Working**: Ensure the alias points to the correct path of `auto_saml2aws.py`.
 - **Missing Dependencies**: Double-check that you have installed all dependencies listed in `requirements.txt`.
+- **AWS Configure**: If you get prompted with `aws configure` when you run any AWS CLI commands, it just means you haven't exported the AWS Profile that you intend to use.
 
 
 ## Additional Configuration
@@ -107,7 +110,7 @@ Once configured, running the tool will automate your login process for AWS with 
 
 Simply run:
 ```bash
-saml2aws
+samlautoauth
 ```
 This command will use the information in your `.env` file to generate a TOTP code, authenticate with AWS using `saml2aws`, and complete the login process automatically.
 
